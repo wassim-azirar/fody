@@ -1,0 +1,4 @@
+﻿<Weavers VerifyAssembly="false">
+  <ModuleInit />
+  <Anotar.Catel />
+</Weavers>

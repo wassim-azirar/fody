@@ -1,0 +1,4 @@
+﻿<Weavers VerifyIgnoreCodes="myignorecode1,myignorecode2">
+  <ModuleInit />
+  <Anotar.Catel />
+</Weavers>

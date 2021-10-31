@@ -1,0 +1,30 @@
+<Project>
+  <PropertyGroup>
+    <Version>6.6.0</Version>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <LangVersion>8.0</LangVersion>
+    <NoWarn>CS1591;CS0618</NoWarn>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)Key.snk</AssemblyOriginatorKeyFile>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageOutputPath>$(SolutionDir)nugets</PackageOutputPath>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeAllInPackage</TargetsForTfmSpecificContentInPackage>
+    <PackageProjectUrl>https://github.com/Fody/Fody</PackageProjectUrl>
+    <PackageIconUrl>https://raw.github.com/Fody/Fody/master/package_icon.png</PackageIconUrl>
+    <PackageTags>ILWeaving, Fody, Cecil, AOP</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <Nullable>enable</Nullable>
+    <!-- work around https://github.com/dotnet/msbuild/issues/4303 -->
+    <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+  </PropertyGroup>
+
+  <Target Name="IncludeAllInPackage">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(OutputPath)\*.*"
+                              Exclude="**/$(TargetName).*;*.json;**/Microsoft*;**/System*"
+                              PackagePath="$(BuildOutputTargetFolder)/$(TargetFramework)" />
+    </ItemGroup>
+  </Target>
+
+</Project>
